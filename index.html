@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal de Notícias</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <main>
+        <h1 class="titulo">Últimas Notícias</h1>
+        <div id="noticias" class="container"></div>
+
+        <script src="bd.js"></script>
+        
+        <script>
+            const container = document.getElementById('noticias');
+
+            dados.forEach(item => {
+                const cartao = document.createElement('div');
+                cartao.className = 'card';
+                cartao.innerHTML = `
+                    <img src="${item.imagem}" alt="${item.titulo}" class="card-img">
+                    <h2>${item.titulo}</h2>
+                    <p><strong>${item.categoria}</strong> - ${item.data}</p>
+                    <p>${item.descricao}</p>
+                    <a href="detalhe.html?id=${item.id}">Leia mais</a>
+                `;
+                container.appendChild(cartao);
+            });
+        </script>
+    </main>
+    <footer>Endereço: Avenida Afonso Pena, n. 155, Centro, Belo Horizonte, MG, CEP 32.298-000.</footer>
+</body>
+
+</html>
