@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes da Notícia</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <main>
+        <div id="detalhe" class="painel"></div>
+
+        <script src="bd.js"></script>
+
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const id = parseInt(params.get('id'));
+            const noticia = dados.find(item => item.id === id);
+
+            const container = document.getElementById('detalhe');
+            if (noticia) {
+                container.innerHTML = `
+                    <h1>${noticia.titulo}</h1>
+                    <p><strong>${noticia.categoria}</strong> - ${noticia.data}</p>
+                    <p><em>Por ${noticia.autor}</em></p>
+                    <img src="${noticia.imagem}" alt="${noticia.titulo}" class="painel-img">
+                    <p>${noticia.conteudo}</p>
+                    <p><a href="index.html">Voltar</a></p>
+                `;
+            } else {
+                container.innerHTML = `<h1>Notícia não encontrada.</h1>`;
+            }
+        </script>
+    </main>
+    <footer>Endereço: Avenida Afonso Pena, n. 155, Centro, Belo Horizonte, MG, CEP 32.298-000.</footer>
+</body>
+
+</html>
